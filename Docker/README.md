@@ -49,3 +49,18 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
+## Check Version
+* [`docker version`](https://docs.docker.com/engine/reference/commandline/version/) shows which version of docker you have running.
+
+Get the server version:
+
+```
+docker version --format '{{.Server.Version}}'
+```
+
+You can also dump raw JSON data:
+
+```
+docker version --format '{{json .}}'
+```
+
