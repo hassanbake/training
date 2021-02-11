@@ -40,3 +40,61 @@ sudo service nginx reload
 * ...
 
 ## Using nginx as **Webserver**
+Edit nginx config file:
+
+```
+sudo nano /etc/nginx/nginx.conf
+```
+
+Clear and replace with:
+
+```
+http {
+    server {
+        listen 8181;
+    }
+}
+
+events { }
+```
+
+Reload nginx service
+
+```
+sudo service nginx reload
+```
+
+Now you can see default nginx webserver page at http://localhost:8181.
+
+To replace a page with default page create an *index.html* page in any folder:
+
+```
+sudo mkdir Documents/nginx
+sudo nano Documents/nginx/index.html
+```
+
+Add your content:
+
+```
+<html>
+    <head>
+        <title>
+            My customized nginx page
+        </title>
+    </head>
+    <body>
+        Hello, this a my nginx customized page
+    </body>
+</html>
+```
+
+Now customize *nginx.conf* *__server__* part:
+
+```
+server {
+    listen 8181;
+    root /home/roozbeh/Documents/nginx/;
+}
+```
+
+Reload nginx service and check http://localhost:8181.
