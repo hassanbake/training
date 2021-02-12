@@ -118,19 +118,41 @@ sudo docker run <image_name>:<image_tag(optional)>
 sudo docker run redis
 ```
 
-> Use *`-d`* to run container in detached mode(run container in background).
-> Use *`--name`* to specify your customized name to container.
-> If you want a transient container, *`docker run --rm`* will remove the container after it stops.
 > *`docker ps -a`* shows running and stopped containers.
 
 ```
 sudo docker ps
 sudo docker ps -a
+```
 
+> Use *`-d`* to run container in detached mode(run container in background).
+> Use *`--name`* to specify your customized name to container.
+> If you want a transient container, *`docker run --rm`* will remove the container after it stops.
+
+```
 sudo docker run -d redis
 sudo docker run --rm --name myRedis redis
 sudo docker run --name myRedis -d redis
 ```
+Use *`--restart`*  flag to control whether your containers start automaticly when they exit, or when Docker restarts.
+To configure the restart policy for a container, use the *`--restart`*  flag when using the *`docker run`* command. The value of the *`--restart`*  flag can be any of the following:
+
+Flag | Description
+-----|-------------
+no | Do not automatically restart the container. (the default)
+on-failure | Restart the container if it exits due to an error, which manifests as a non-zero exit code.
+always | Always restart the container if it stops. If it is manually stopped, it is restarted only when Docker daemon restarts or the container itself is manually restarted. 
+unless-stopped | Similar to *always*, except that when the container is stopped (manually or otherwise), it is not restarted even after Docker daemon restarts.
+
+> You can use *`docker update`* to update restart behaviour of one or some of the containers:
+
+```
+sudo docker run -d --restart unless-stopped redis
+
+sudo docker update --restart unless-stopped redis
+sudo docker update --restart unless-stopped $(docker ps -q)
+```
+
 ## Debugging Containers
 
 * **[`docker logs`](https://docs.docker.com/engine/reference/commandline/logs/)** gets logs from container. (You can use a custom log driver, but logs is only available for json-file and journald in 1.10).
@@ -158,3 +180,11 @@ sudo docker exec -it <container_id> /bin/bash
 sudo docker exec -it <container_id> sh
 sudo docker attach <container_id>
 ```
+
+## Docker Network
+
+## Docker Volume
+
+## Docker File
+
+## Docker Compose
