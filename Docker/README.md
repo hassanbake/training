@@ -134,8 +134,8 @@ sudo docker run -d redis
 sudo docker run --rm --name myRedis redis
 sudo docker run --name myRedis -d redis
 ```
-Use *`--restart`*  flag to control whether your containers start automaticly when they exit, or when Docker restarts.
-To configure the restart policy for a container, use the *`--restart`*  flag when using the *`docker run`* command. The value of the *`--restart`*  flag can be any of the following:
+> Use *`--restart`*  flag to control whether your containers start automaticly when they exit, or when Docker restarts.
+> To configure the restart policy for a container, use the *`--restart`*  flag when using the *`docker run`* command. The value of the *`--restart`*  flag can be any of the following:
 
 Flag | Description
 -----|-------------
@@ -182,6 +182,56 @@ sudo docker attach <container_id>
 ```
 
 ## Docker Network
+
+* **[`docker network ls`](https://docs.docker.com/engine/reference/commandline/network_ls/)** List networks
+* **[`docker network inspect`](https://docs.docker.com/engine/reference/commandline/network_inspect/)** NAME Display detailed information on one or more networks.
+* **[`docker network create`](https://docs.docker.com/engine/reference/commandline/network_create/)** NAME Create a new network (default type: bridge).
+* **[`docker network rm`](https://docs.docker.com/engine/reference/commandline/network_rm/)** NAME Remove one or more networks by name or identifier. No containers can be connected to the network when deleting it.
+* **[`docker prune`](https://docs.docker.com/engine/reference/commandline/network_prune/)** remove all unused networks
+* *[`docker network connect`](https://docs.docker.com/engine/reference/commandline/network_connect/)* NETWORK CONTAINER Connect a container to a network
+* *[`docker network disconnect`](https://docs.docker.com/engine/reference/commandline/network_disconnect/)* NETWORK CONTAINER Disconnect a container from a network
+
+By default there are 3 types of networks included in a docker host:
+1. host
+2. none
+3. bridge
+
+You can see all these networks by executing:
+
+```
+sudo docker network ls
+```
+You can connect to a docker container, out of docker host with an assigned docker **host** network by using *`-p`* when running a container.
+In the following example we can connect to myRedis container through port 6000:
+
+```
+sudo docker run --name myRedis -d -p 6000:6379 redis
+```
+
+There is a default bridge network in docker host. Any container in a docker host has an IP address in default bridge network that can connect to other containers through. You can find container assigned IP address by *incpect*ing the default bridge network. Create two alpine container named alpine1 and alpine 2 and inspect bridge network:
+
+```
+sudo docker run -itd --name=alpine1 alpine
+sudo docker run -itd --name=alpine2 alpine
+
+sudo docker network inspect <bridge_network_id>
+
+sudo docker attach alpine1
+```
+You can *attach* each these alpine container and ping other one through bridge network by *IP address* but not its *name*.
+To ping other containers by ints names you need to create a bridge network yourself and assign it to containers by using *`--network`*:
+
+```
+sudo docker network create --driver=bridge my-network
+sudo docker network ls
+
+sudo docker rm -f $(sudo docker ps -aq)
+sudo docker run -itd --name=alpine1 --network=my-network alpine
+sudo docker run -itd --name=alpine2 --network=my-network alpine
+sudo docker network inspect my-network
+
+sudo docker attach alpine1
+```
 
 ## Docker Volume
 
