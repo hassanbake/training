@@ -1,2 +1,2 @@
-# training
+# Training
 ## Never Stop Learning

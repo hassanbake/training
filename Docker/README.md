@@ -235,6 +235,79 @@ sudo docker attach alpine1
 
 ## Docker Volume
 
+Docker volumes are [free-floating filesystems](https://docs.docker.com/storage/volumes/). They don't have to be connected to a particular container.
+
+* **[docker volume ls](https://docs.docker.com/engine/reference/commandline/volume_ls/)** List all the volumes known to Docker. 
+* **[docker volume inspect](https://docs.docker.com/engine/reference/commandline/volume_inspect/)** Returns information about a volume.
+* **[docker volume create](https://docs.docker.com/engine/reference/commandline/volume_create/)** Creates a new volume that containers can consume and store data in.
+* **[docker volume rm](https://docs.docker.com/engine/reference/commandline/volume_rm/)** Remove one or more volumes. You cannot remove a volume that is in use by a container.
+* **[docker volume prune](https://docs.docker.com/engine/reference/commandline/volume_prune/)** Remove all unused local volumes. Unused local volumes are those which are not referenced by any containers
+
+> For example you can assign a volume to *SQL Server* container data & log files by using *`-v`* :
+
+```
+sudo docker volume create sqlvolume
+sudo docker volume ls
+
+sudo docker run --name mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=myStrongPassword' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2019-CU8-ubuntu-16.04
+```
+> or assign redis container *redis.conf* file to a specified operating system path to configure it later more easily:
+
+```
+sudo mkdir /etc/redis
+
+sudo docker run -d -v /etc/redis:/usr/local/etc/redis -p 6379:6379 --name myredis redis redis-server /usr/local/etc/redis/redis.conf
+```
+
+> Here we have an example of runing *Seq* monitoring system in a docker container:
+
+```
+sudo mkdir /etc/seq
+sudo mkdir /etc/seq/data
+
+sudo docker run --name seq -d -v /etc/seq/data:/data --restart unless-stopped -e ACCEPT_EULA=Y -p 5341:5341 -p 80:80 datalust/seq:latest
+```
+
+## Private Docker Registry
+
+You can create a local private docker registry as follows:
+
+```
+sudo docker run -d -p 5000:5000 --restart always --name registry registry
+```
+
+or
+
+```
+sudo mkdir /mnt/registry
+
+sudo docker run -d -p 5000:5000 --restart=always --name registry -v /mnt/registry:/var/lib/registry registry:2
+```
+
+Now you can push any images to your local registry:
+
+```
+sudo docker pull ubuntu
+sudo docker tag ubuntu localhost:5000/ubuntu
+sudo docker push localhost:5000/ubuntu
+```
+
+> To push an image to a remote registry from a client, edit your *`/etc/docker/daemon.json`* file(Create the file if it dosent exist).
+> In windows and mac you must change *`insecure-registries`* part in docker desktop settings.
+
+```
+{
+  "insecure-registries" : ["<my_registry_address>:5000"]
+}
+```
+
+> You can see your pushed images from client:
+
+```
+sudo curl -X GET http://<my_registry_address>:5000/v2/_catalog
+```
+
 ## Docker File
+
 
 ## Docker Compose
