@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/roozbeh/Documents/hassnabake/training/Redis/RedisSentinelClient/RedisSentinelClient.csproj": {}
+  },
+  "projects": {
+    "/home/roozbeh/Documents/hassnabake/training/Redis/RedisSentinelClient/RedisSentinelClient.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/roozbeh/Documents/hassnabake/training/Redis/RedisSentinelClient/RedisSentinelClient.csproj",
+        "projectName": "RedisSentinelClient",
+        "projectPath": "/home/roozbeh/Documents/hassnabake/training/Redis/RedisSentinelClient/RedisSentinelClient.csproj",
+        "packagesPath": "/home/roozbeh/.nuget/packages/",
+        "outputPath": "/home/roozbeh/Documents/hassnabake/training/Redis/RedisSentinelClient/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/roozbeh/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/roozbeh/dotnet/sdk/5.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

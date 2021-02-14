@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "Igz7flmG4+NTLG7c8E2gdc7pNTz+TuH5g7SUIq7CEdxOS3Oi6laDZ3adrW/h6q+8jpqQ8oembfDZ/JllLsg9Kg==",
+  "success": true,
+  "projectFilePath": "/home/roozbeh/Documents/hassnabake/training/Redis/RedisSentinelClient/RedisSentinelClient.csproj",
+  "expectedPackageFiles": [
+    "/home/roozbeh/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/microsoft.win32.registry/5.0.0/microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/microsoft.win32.systemevents/5.0.0/microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/pipelines.sockets.unofficial/2.2.0/pipelines.sockets.unofficial.2.2.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/stackexchange.redis/2.2.4/stackexchange.redis.2.2.4.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/system.configuration.configurationmanager/5.0.0/system.configuration.configurationmanager.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/system.diagnostics.performancecounter/5.0.0/system.diagnostics.performancecounter.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/system.drawing.common/5.0.0/system.drawing.common.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/system.io.pipelines/5.0.0/system.io.pipelines.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/system.security.accesscontrol/5.0.0/system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/system.security.cryptography.protecteddata/5.0.0/system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/system.security.permissions/5.0.0/system.security.permissions.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/system.security.principal.windows/5.0.0/system.security.principal.windows.5.0.0.nupkg.sha512",
+    "/home/roozbeh/.nuget/packages/system.windows.extensions/5.0.0/system.windows.extensions.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
